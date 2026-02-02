@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>An Intern's Dilemma</title>
+    <title>Jamie Turner at MLI, Inc.</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap');
         
@@ -134,18 +134,19 @@
         .container {
             position: relative;
             z-index: 10;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
+            width: 100%;
+            height: 100%;
         }
 
-        /* Section Base */
+        /* Section Base - EXACTLY 100vh */
         section {
-            min-height: 100vh;
+            width: 100%;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 120px 0;
+            align-items: center;
+            padding: 60px 80px;
             opacity: 0;
             transform: translateY(60px);
             transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -157,28 +158,56 @@
             transform: translateY(0);
         }
 
+        /* 3D Emoji Icons */
+        .emoji-3d {
+            font-size: 6em;
+            display: inline-block;
+            margin-bottom: 20px;
+            animation: float3d 4s ease-in-out infinite;
+            /*filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6))*/
+                    /*drop-shadow(0 0 20px rgba(102, 126, 234, 0.4));*/
+            /*transform-style: preserve-3d;*/
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.5),
+                0 00px 30px rgba(0, 0, 0, 0.9),
+                0 0px 50px rgba(102, 126, 234, 0.9);
+        }
+
+        @keyframes float3d {
+            0%, 100% { 
+                transform: translateY(0) rotateX(0deg) rotateY(0deg);
+            }
+            25% { 
+                transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
+            }
+            50% { 
+                transform: translateY(0) rotateX(0deg) rotateY(-5deg);
+            }
+            75% { 
+                transform: translateY(-10px) rotateX(-5deg) rotateY(0deg);
+            }
+        }
+
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            position: relative;
         }
 
         .hero-title {
-            font-size: clamp(3rem, 8vw, 7rem);
+            font-size: 7rem;
             font-weight: 900;
             background: linear-gradient(135deg, #fff 0%, var(--primary) 60%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             letter-spacing: -0.04em;
             line-height: 0.95;
-            text-shadow: 0 0 80px rgba(102, 126, 234, 0.3);
             animation: titleGlow 3s ease-in-out infinite;
         }
 
@@ -192,10 +221,10 @@
         }
 
         .hero-subtitle {
-            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-size: clamp(1rem, 2vw, 1.4rem);
             color: rgba(255, 255, 255, 0.5);
             font-weight: 300;
-            margin-bottom: 80px;
+            margin-bottom: 40px;
             letter-spacing: 0.05em;
         }
 
@@ -207,47 +236,17 @@
             backdrop-filter: blur(30px);
             border: 0.5px solid rgba(255, 255, 255, 0.15);
             border-radius: 32px;
-            padding: 50px 60px;
-            margin: 60px 0;
-            position: relative;
-            overflow: hidden;
+            padding: 40px 50px;
+            max-width: 900px;
             box-shadow: 
                 0 20px 60px rgba(102, 126, 234, 0.25),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
-        .team-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 0%, rgba(102, 126, 234, 0.15), transparent 60%);
-            pointer-events: none;
-        }
-
-        .team-hero > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .team-icon {
-            font-size: 4em;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
-            animation: float 4s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
         .team-name {
-            font-size: 2.5em;
+            font-size: 2em;
             font-weight: 700;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             background: linear-gradient(135deg, #fff, rgba(255, 255, 255, 0.7));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -256,17 +255,17 @@
         .team-members {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 12px;
             justify-content: center;
-            margin-top: 25px;
+            margin-top: 20px;
         }
 
         .member-tag {
             background: rgba(255, 255, 255, 0.08);
             border: 0.5px solid rgba(255, 255, 255, 0.2);
             border-radius: 16px;
-            padding: 12px 24px;
-            font-size: 0.95em;
+            padding: 10px 20px;
+            font-size: 0.85em;
             font-weight: 500;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
@@ -279,74 +278,10 @@
         }
 
         .vision-text {
-            margin-top: 30px;
-            font-size: 1.1em;
-            color: rgba(255, 255, 255, 0.7);
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.6);
             font-style: italic;
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin: 80px 0;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.06) 0%, 
-                rgba(255, 255, 255, 0.02) 100%);
-            backdrop-filter: blur(20px);
-            border: 0.5px solid rgba(255, 255, 255, 0.12);
-            border-radius: 24px;
-            padding: 40px;
-            text-align: center;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.1) 0%, 
-                rgba(255, 255, 255, 0.04) 100%);
-            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
-        }
-
-        .stat-card:hover::before {
-            opacity: 1;
-        }
-
-        .stat-number {
-            font-size: 3.5em;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
-            text-shadow: 0 0 40px rgba(102, 126, 234, 0.3);
-        }
-
-        .stat-label {
-            font-size: 0.85em;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 600;
         }
 
         /* Section Headers */
@@ -356,8 +291,61 @@
             background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             letter-spacing: -0.03em;
+            text-align: center;
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            max-width: 1300px;
+            width: 100%;
+            height: calc(100vh - 120px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.06) 0%, 
+                rgba(255, 255, 255, 0.02) 100%);
+            backdrop-filter: blur(20px);
+            border: 0.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
         }
 
         /* Glass Cards */
@@ -368,61 +356,34 @@
             backdrop-filter: blur(30px);
             border: 0.5px solid rgba(255, 255, 255, 0.15);
             border-radius: 28px;
-            padding: 45px;
-            margin: 35px 0;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 255, 255, 0.08), 
-                transparent);
-            transition: left 0.8s;
+            padding: 35px;
+            margin: 20px 0;
+            transition: all 0.5s ease;
         }
 
         .glass-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.25);
             box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
         }
 
-        .glass-card:hover::before {
-            left: 100%;
-        }
-
-        .card-icon {
-            font-size: 3em;
-            margin-bottom: 20px;
-            display: inline-block;
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
-        }
-
         .card-title {
-            font-size: 1.8em;
+            font-size: 1.4em;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #fff;
         }
 
         .card-text {
-            font-size: 1.05em;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.75);
         }
 
         /* Timeline */
         .timeline {
             position: relative;
-            padding: 40px 0 40px 60px;
+            padding: 30px 0 30px 50px;
+            max-width: 800px;
         }
 
         .timeline::before {
@@ -431,7 +392,7 @@
             left: 0;
             top: 0;
             bottom: 0;
-            width: 1px;
+            width: 2px;
             background: linear-gradient(180deg, 
                 transparent,
                 var(--primary) 10%,
@@ -443,14 +404,14 @@
 
         .timeline-item {
             position: relative;
-            margin-bottom: 50px;
-            padding-left: 40px;
+            margin-bottom: 30px;
+            padding-left: 35px;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -64px;
+            left: -56px;
             top: 5px;
             width: 14px;
             height: 14px;
@@ -478,14 +439,14 @@
         .timeline-label {
             color: var(--accent);
             font-weight: 700;
-            font-size: 1.1em;
-            margin-bottom: 8px;
+            font-size: 1em;
+            margin-bottom: 5px;
         }
 
         .timeline-content {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 1em;
-            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9em;
+            line-height: 1.6;
         }
 
         /* Key Insight Box */
@@ -495,61 +456,31 @@
                 rgba(255, 152, 0, 0.06) 100%);
             border-left: 3px solid var(--warning);
             border-radius: 20px;
-            padding: 35px 40px;
-            margin: 40px 0;
-            position: relative;
-            box-shadow: 
-                0 10px 40px rgba(255, 193, 7, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .key-insight::before {
-            content: '💡';
-            position: absolute;
-            left: -20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2.5em;
-            filter: drop-shadow(0 0 15px rgba(255, 193, 7, 0.6));
-            animation: float 3s ease-in-out infinite;
+            padding: 30px 35px;
+            margin: 25px 0;
+            box-shadow: 0 10px 40px rgba(255, 193, 7, 0.15);
         }
 
         .key-insight-text {
-            font-size: 1.15em;
+            font-size: 1em;
             font-weight: 500;
             color: rgba(255, 255, 255, 0.9);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         /* Grid Layouts */
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 35px;
-            margin: 40px 0;
+            gap: 25px;
+            margin: 25px 0;
         }
 
-        /* Quote */
-        .quote-block {
-            position: relative;
-            padding: 40px 50px;
-            margin: 50px 0;
-            font-style: italic;
-            font-size: 1.25em;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.9);
-            border-left: 3px solid var(--primary);
-        }
-
-        .quote-block::before {
-            content: '"';
-            position: absolute;
-            left: -15px;
-            top: -30px;
-            font-size: 6em;
-            color: rgba(102, 126, 234, 0.2);
-            font-family: Georgia, serif;
-            line-height: 1;
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 25px 0;
         }
 
         /* Options Cards */
@@ -560,76 +491,63 @@
             backdrop-filter: blur(20px);
             border: 0.5px solid rgba(255, 255, 255, 0.12);
             border-radius: 24px;
-            padding: 35px 40px;
-            margin: 25px 0;
+            padding: 25px 30px;
+            margin: 15px 0;
             transition: all 0.4s ease;
             cursor: pointer;
-            position: relative;
-        }
-
-        .option-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 0;
-            background: linear-gradient(90deg, var(--primary), transparent);
-            border-radius: 24px 0 0 24px;
-            transition: width 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         .option-card:hover {
             transform: translateX(10px);
-            border-color: rgba(255, 255, 255, 0.25);
             box-shadow: 0 15px 50px rgba(102, 126, 234, 0.25);
         }
 
-        .option-card:hover::before {
-            width: 6px;
-        }
-
         .option-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
+            min-width: 50px;
             height: 50px;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: 16px;
             font-weight: 800;
             font-size: 1.5em;
-            margin-right: 20px;
-            box-shadow: 
-                0 8px 20px rgba(102, 126, 234, 0.3),
-                inset 0 2px 4px rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .option-content {
+            flex: 1;
         }
 
         .option-title {
-            font-size: 1.4em;
+            font-size: 1.2em;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .option-desc {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1em;
-            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.85em;
+            line-height: 1.6;
         }
 
         /* Lists */
         ul {
             list-style: none;
-            margin: 20px 0;
+            margin: 15px 0;
         }
 
         li {
             position: relative;
-            padding-left: 35px;
-            margin-bottom: 15px;
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.7;
+            padding-left: 30px;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            font-size: 0.9em;
         }
 
         li::before {
@@ -638,7 +556,7 @@
             left: 0;
             color: var(--primary);
             font-weight: 700;
-            font-size: 1.2em;
+            font-size: 1.1em;
         }
 
         /* Scroll Progress */
@@ -685,76 +603,89 @@
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
         }
 
-        /* Learnings Grid */
-        .learnings-grid {
-            display: grid;
-            gap: 35px;
-            margin: 50px 0;
-        }
-
-        .learning-card {
+        /* Competency Boxes */
+        .competency-box {
             background: linear-gradient(135deg, 
-                rgba(102, 126, 234, 0.08) 0%, 
-                rgba(118, 75, 162, 0.04) 100%);
-            backdrop-filter: blur(25px);
-            border: 0.5px solid rgba(255, 255, 255, 0.15);
-            border-radius: 28px;
-            padding: 45px;
-            position: relative;
-            overflow: hidden;
+                rgba(76, 175, 80, 0.1) 0%, 
+                rgba(76, 175, 80, 0.03) 100%);
+            border-left: 3px solid var(--success);
+            padding: 25px;
+            border-radius: 16px;
         }
 
-        .learning-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, 
-                rgba(102, 126, 234, 0.08) 0%, 
-                transparent 60%
-            );
-            animation: rotate 20s linear infinite;
+        .competency-box.weakness {
+            background: linear-gradient(135deg, 
+                rgba(244, 67, 54, 0.1) 0%, 
+                rgba(244, 67, 54, 0.03) 100%);
+            border-left: 3px solid var(--danger);
         }
 
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .competency-title {
+            font-size: 1em;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
         }
 
-        .learning-card > * {
-            position: relative;
-            z-index: 1;
+        .mini-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin: 12px 0;
         }
 
-        .learning-number {
-            font-size: 4em;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+        .mini-card h4 {
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .question-card {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.05) 0%, 
+                rgba(255, 255, 255, 0.01) 100%);
+            border: 0.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 15px 0;
+        }
+
+        .question-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .role-section {
+            margin: 20px 0;
+        }
+
+        .role-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 12px;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 0 20px;
+            section {
+                padding: 40px 30px;
             }
 
             .stats-grid,
-            .grid-2 {
+            .grid-2,
+            .grid-3 {
                 grid-template-columns: 1fr;
             }
 
-            section {
-                padding: 80px 0;
-            }
-
             .hero-title {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
 
-            .timeline {
-                padding-left: 40px;
+            .emoji-3d {
+                font-size: 5em;
             }
         }
 
@@ -770,7 +701,6 @@
             transform: translateY(0);
         }
 
-        /* Strong text */
         strong {
             color: #fff;
             font-weight: 700;
@@ -779,6 +709,31 @@
         em {
             color: rgba(255, 255, 255, 0.9);
             font-style: italic;
+        }
+
+        /* Compact layouts for 100vh sections */
+        .compact-content {
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .compact-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .compact-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .compact-content::-webkit-scrollbar-thumb {
+            background: rgba(102, 126, 234, 0.5);
+            border-radius: 10px;
+        }
+
+        .compact-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(102, 126, 234, 0.7);
         }
     </style>
 </head>
@@ -799,20 +754,21 @@
     <div id="three-canvas"></div>
 
     <!-- Scroll to Top -->
-    <div class="scroll-top" id="scrollTop">↑</div>
+    <div class="scroll-top" id="scrollTop" style="display:none">↑</div>
 
     <!-- Main Content -->
     <div class="container">
-        <!-- Hero Section -->
+        <!-- SLIDE 1: Hero Section -->
         <section class="hero visible">
-            <h1 class="hero-title">An Intern's Dilemma</h1>
+
+            <h1 class="hero-title">Jamie Turner at MLI, Inc.</h1>
             <p class="hero-subtitle">Ethics in Early Career Decisions</p>
 
             <div class="team-hero">
-                <div class="team-icon">🎯</div>
+                            <div class="emoji-3d">🎯</div>
                 <h2 class="team-name">Team</h2>
                 <div class="team-members">
-                    <div class="member-tag">Grahm Hinkel</div>
+                    <div class="member-tag">Graham Hinkel</div>
                     <div class="member-tag">Fabian Junco</div>
                     <div class="member-tag">Ariel Nyamien</div>
                     <div class="member-tag">Andrew Villasenor</div>
@@ -820,322 +776,502 @@
                 </div>
                 <p class="vision-text">"Building trust through ethical excellence and collaborative innovation"</p>
             </div>
+        </section>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">2010</div>
-                    <div class="stat-label">Summer</div>
+        <!-- SLIDE 2: Key Person -->
+        <section class="fade-in">
+            <div class="content-wrapper">
+                <div class="emoji-3d" style="text-align: center;">👤</div>
+                <h2 class="section-header">Jamie Turner</h2>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">32</div>
+                        <div class="stat-label">Years Old</div>
+                    </div>
+                                    <div class="stat-card">
+                        <div class="stat-number">MBA</div>
+                        <div class="stat-label">Top School</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Months at MLI</div>
+                    </div>
+    
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">HBS</div>
-                    <div class="stat-label">MBA Student</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">Asia</div>
-                    <div class="stat-label">Location</div>
+
+                <div class="grid-2">
+                    <div class="mini-card">
+                        <h4 style="color: var(--primary);">Position</h4>
+                        <p class="card-text">VP Marketing & Sales</p>
+                    </div>
+                    <div class="mini-card">
+                        <h4 style="color: var(--primary);">Experience</h4>
+                        <p class="card-text">Wolf River • Lambowland</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- The Problem -->
+        <!-- SLIDE 3: Core Problem -->
         <section class="fade-in">
-            <h2 class="section-header">The Problem</h2>
+            <div class="content-wrapper">
+                <div class="emoji-3d" style="text-align: center;">⚡</div>
+                <h2 class="section-header">Core Problem</h2>
 
-            <div class="glass-card">
-                <div class="card-icon">👤</div>
-                <h3 class="card-title">Mark Yang (MBA 2011)</h3>
-                <p class="card-text">European tech security firm • Asia office • Market research intern</p>
-            </div>
-
-            <div class="key-insight">
-                <p class="key-insight-text">
-                    <strong>Core Issue:</strong> Asked to misrepresent himself as "HBS student & researcher" while hiding company affiliation to extract competitor intelligence
-                </p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-label">Spring 2010</div>
-                    <div class="timeline-content">Yang meets CEO at HBS, applies for Asia office internship</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-label">Early June</div>
-                    <div class="timeline-content">Visa delays force remote work from Boston</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-label">First Call</div>
-                    <div class="timeline-content">Office head suggests concealing company affiliation</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-label">Follow-up</div>
-                    <div class="timeline-content">Sales & Marketing VPs repeat request separately</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-label">Realization</div>
-                    <div class="timeline-content">This is coordinated strategy, not individual suggestion</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- The Stakes -->
-        <section class="fade-in">
-            <h2 class="section-header">What Was at Risk</h2>
-
-            <div class="grid-2">
-                <div class="glass-card">
-                    <div class="card-icon">⚠️</div>
-                    <h3 class="card-title">Risks of Complying</h3>
-                    <ul>
-                        <li>Personal reputation damage</li>
-                        <li>Harvard's reputation at stake</li>
-                        <li>Ethical compromise early in career</li>
-                        <li>Legal/professional consequences</li>
-                    </ul>
-                </div>
-                <div class="glass-card">
-                    <div class="card-icon">💼</div>
-                    <h3 class="card-title">Risks of Refusing</h3>
-                    <ul>
-                        <li>Internship termination</li>
-                        <li>Lost other offers already</li>
-                        <li>Employment gap to explain</li>
-                        <li>Career opportunity cost</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="glass-card">
-                <div class="card-icon">💭</div>
-                <h3 class="card-title">Family Perspectives</h3>
-                <p class="card-text"><strong>Mother:</strong> Not a major problem • <strong>Brothers:</strong> Neutral • <strong>Girlfriend:</strong> Strongly unethical</p>
-            </div>
-        </section>
-
-        <!-- Investigation -->
-        <section class="fade-in">
-            <h2 class="section-header">Yang's Response</h2>
-
-            <div class="glass-card">
-                <div class="card-icon">🔍</div>
-                <h3 class="card-title">Strategic CEO Call</h3>
-                <p class="card-text">Asked about ethics integration across geographies <em>without revealing dilemma</em></p>
-                
-                <div class="key-insight" style="margin-top: 30px;">
+                <div class="key-insight">
                     <p class="key-insight-text">
-                        <strong>CEO's Response:</strong> Company working to ensure uniform ethics globally
+                        <strong>Main Conflict:</strong> Promised autonomy became micromanagement in 6 months
+                    </p>
+                </div>
+
+                <div class="grid-2">
+                    <div class="competency-box">
+                        <h3 class="competency-title">      <div class="emoji-3d" style="font-size:1rem; animation:none">✅ </div>  Strengths</h3>
+                        <ul>
+                            <li>Marketing expertise</li>
+                            <li>Strategic thinking</li>
+                            <li>Analytical abilities</li>
+                        </ul>
+                    </div>
+                    <div class="competency-box weakness">
+                        <h3 class="competency-title"><div class="emoji-3d" style="font-size:1rem; animation:none">❌ </ div>   Weaknesses</h3>
+                        <ul>
+                            <li>Coalition building</li>
+                            <li>Reading dynamics</li>
+                            <li>Emotional intelligence</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 4: Timeline -->
+        <section class="fade-in">
+            <div class="content-wrapper">
+                <div class="emoji-3d" style="text-align: center;">📅</div>
+                <h2 class="section-header">Conflict Timeline</h2>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-label">March</div>
+                        <div class="timeline-content">Joined, promised autonomy</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-label" >May</div>
+                        <div class="timeline-content">Successful plan, first tensions</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-label">July</div>
+                        <div class="timeline-content">Major conflict over pricing</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-label">August</div>
+                        <div class="timeline-content">Control centralized, bad results</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-label" >September</div>
+                        <div class="timeline-content">Crisis, CEO visit upcoming</div>
+                    </div>
+                </div>
+
+                <div class="grid-3">
+                    <div class="mini-card">
+                        <h4 style="color: #ffc107;">⚠️ Warning</h4>
+                        <p class="card-text">Public criticism</p>
+                    </div>
+                    <div class="mini-card">
+                        <h4 style="color: #ff9800;">🔻 Deterioration</h4>
+                        <p class="card-text">KC closure conflict</p>
+                    </div>
+                    <div class="mini-card">
+                        <h4 style="color: #f44336;">❌ Crisis</h4>
+                        <p class="card-text">Contradictory signals</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 5: Problem Diagnosis -->
+        <section class="fade-in">
+            <div class="content-wrapper">
+                <div class="emoji-3d" style="text-align: center;">🔍</div>
+                <h2 class="section-header">Problem Diagnosis</h2>
+
+                <div class="grid-3">
+                    <div class="role-section">
+                        <div class="role-title">Turner's Role</div>
+                        <ul>
+                            <li>3 company conflicts</li>
+                            <li>Weak political skills</li>
+                            <li>Arrogant attitude</li>
+                        </ul>
+                    </div>
+                    <div class="role-section">
+                        <div class="role-title">Cardullo's Role</div>
+                        <ul>
+                            <li>Broken promises</li>
+                            <li>Micromanagement</li>
+                            <li>Public reprimands</li>
+                        </ul>
+                    </div>
+                    <div class="role-section">
+                        <div class="role-title">Systemic Issues</div>
+                        <ul>
+                            <li>Dual role vacuum</li>
+                            <li>Internal coalition</li>
+                            <li>Culture transition</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="key-insight">
+                    <p class="key-insight-text">
+                        <strong>Core:</strong> Cardullo's contradictory signals make success impossible
                     </p>
                 </div>
             </div>
-
-            <div class="glass-card">
-                <div class="card-icon">🎓</div>
-                <h3 class="card-title">Professor Consultation</h3>
-                <p class="card-text">Reached out to HBS Leadership & Corporate Accountability professor</p>
-            </div>
-
-            <div class="key-insight">
-                <p class="key-insight-text">
-                    <strong>Conclusion:</strong> Disconnect between corporate values and local practice-not CEO-endorsed policy
-                </p>
-            </div>
         </section>
 
-        <!-- Three Options -->
+        <!-- SLIDE 6: Hypotheses -->
         <section class="fade-in">
-            <h2 class="section-header">Three Options</h2>
+            <div class="content-wrapper">
+                <div class="emoji-3d" style="text-align: center;">🤔</div>
+                <h2 class="section-header">Your Hypotheses</h2>
 
-            <div class="option-card">
-                <span class="option-number">1</span>
-                <div style="display: inline-block; vertical-align: top; width: calc(100% - 80px);">
-                    <h3 class="option-title">Full Transparency</h3>
-                    <p class="option-desc">Participate while disclosing affiliation → Maintains ethics but project likely fails</p>
-                </div>
-            </div>
-
-            <div class="option-card">
-                <span class="option-number">2</span>
-                <div style="display: inline-block; vertical-align: top; width: calc(100% - 80px);">
-                    <h3 class="option-title">Complete Refusal</h3>
-                    <p class="option-desc">Request entirely different project → Clear boundaries but risks termination</p>
-                </div>
-            </div>
-
-            <div class="option-card">
-                <span class="option-number">3</span>
-                <div style="display: inline-block; vertical-align: top; width: calc(100% - 80px);">
-                    <h3 class="option-title">Delay Strategy</h3>
-                    <p class="option-desc">Start alternative project, put original on hold → Buys time but delays resolution</p>
-                </div>
-            </div>
-
-            <div class="key-insight" style="margin-top: 50px;">
-                <p class="key-insight-text">
-                    <strong>Yang's Choice:</strong> Direct confrontation with office head-willing to walk away if necessary
-                </p>
-            </div>
-        </section>
-
-        <!-- The Confrontation -->
-        <section class="fade-in">
-            <h2 class="section-header">The Confrontation</h2>
-
-            <div class="glass-card">
-                <div class="card-icon">📞</div>
-                <h3 class="card-title">Yang's Approach</h3>
-                <div class="quote-block">
-                    In a subtle way, I conveyed I was not willing to misrepresent myself, and would rather leave if they insisted. My emphasis was on changing the project.
-                </div>
-            </div>
-
-            <div class="grid-2">
-                <div class="glass-card">
-                    <h3 class="card-title">Strategy</h3>
-                    <ul>
-                        <li>Direct but diplomatic</li>
-                        <li>Solution-focused</li>
-                        <li>Clear bottom line set</li>
-                        <li>Professional tone maintained</li>
-                    </ul>
-                </div>
-                <div class="glass-card">
-                    <h3 class="card-title">Response</h3>
-                    <ul>
-                        <li><em>"Mostly apologetic"</em></li>
-                        <li>Worked together on new project</li>
-                        <li>Productive resolution</li>
-                        <li>Relationship preserved</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="key-insight">
-                <p class="key-insight-text">
-                    Minor questionable suggestions continued but were easy to decline after setting initial boundary
-                </p>
-            </div>
-        </section>
-
-        <!-- Outcomes -->
-        <section class="fade-in">
-            <h2 class="section-header">Results</h2>
-
-            <div class="grid-2">
-                <div class="glass-card">
-                    <div class="card-icon">✅</div>
-                    <h3 class="card-title">Professional Success</h3>
-                    <ul>
-                        <li>Office head praised work quality</li>
-                        <li>"Significant value" delivered</li>
-                        <li>Requested more HBS interns</li>
-                        <li>COO discussed future opportunities</li>
-                    </ul>
-                </div>
-                <div class="glass-card">
-                    <div class="card-icon">📚</div>
-                    <h3 class="card-title">Skills Gained</h3>
-                    <ul>
-                        <li>Industry expertise</li>
-                        <li>Marketing analysis</li>
-                        <li>M&A experience</li>
-                        <li>Project redefinition</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="key-insight">
-                <p class="key-insight-text">
-                    <strong>Critical Proof:</strong> Maintained ethics AND delivered excellent results-not mutually exclusive
-                </p>
-            </div>
-        </section>
-
-        <!-- Three Learnings -->
-        <section class="fade-in">
-            <h2 class="section-header">Yang's Three Learnings</h2>
-
-            <div class="learnings-grid">
-                <div class="learning-card">
-                    <div class="learning-number">1️⃣</div>
-                    <h3 class="card-title">Ethical Identity Runs Deep</h3>
-                    <div class="quote-block">
-                        My ethical boundaries shape me as a business person more profoundly than I originally thought.
+                <div class="glass-card" style="text-align: center; padding: 50px;">
+                    <h3 class="card-title">What would you do in Turner's place?</h3>
+                    
+                    <div class="grid-2" style="margin-top: 40px;">
+                        <div class="mini-card">
+                            <h4 style="color: var(--primary); font-size: 1.1em;">🎯 Immediate</h4>
+                            <p class="card-text">What to do today?</p>
+                        </div>
+                        <div class="mini-card">
+                            <h4 style="color: var(--accent); font-size: 1.1em;">📈 Long-term</h4>
+                            <p class="card-text">Strategy for 3-6 months?</p>
+                        </div>
                     </div>
-                    <p class="card-text"><strong>Insight:</strong> Values ran deeper than intellectual understanding-manifested as visceral reactions</p>
-                </div>
-
-                <div class="learning-card">
-                    <div class="learning-number">2️⃣</div>
-                    <h3 class="card-title">Practice Builds Courage</h3>
-                    <div class="quote-block">
-                        Having 'practiced' in low-risk environment gave me confidence to manage tougher situations later.
-                    </div>
-                    <p class="card-text"><strong>Insight:</strong> Ethical courage is a skill-even "low-risk" stands build capacity for harder decisions</p>
-                </div>
-
-                <div class="learning-card">
-                    <div class="learning-number">3️⃣</div>
-                    <h3 class="card-title">Education Provides Framework</h3>
-                    <div class="quote-block">
-                        Had I not been exposed to our LCA semester at HBS, I probably would have been naïve or lost.
-                    </div>
-                    <p class="card-text"><strong>Insight:</strong> Ethics education provided conceptual tools invaluable when theory met reality</p>
                 </div>
             </div>
         </section>
 
-        <!-- Key Takeaways -->
+        <!-- SLIDE 7: Key Diagnosis -->
         <section class="fade-in">
-            <h2 class="section-header">Key Takeaways</h2>
+            <div class="content-wrapper">
+                <div class="emoji-3d" style="text-align: center;">⚖️</div>
+                <h2 class="section-header">Key Diagnosis</h2>
 
-            <div class="grid-2">
                 <div class="glass-card">
-                    <div class="card-icon">👤</div>
-                    <h3 class="card-title">For Individuals</h3>
-                    <ul>
-                        <li>Clarify ethics BEFORE crisis</li>
-                        <li>Seek diverse counsel</li>
-                        <li>Investigate organizational context</li>
-                        <li>Be direct yet diplomatic</li>
-                        <li>Document and reflect</li>
-                        <li>Practice builds capacity</li>
-                    </ul>
+                    <h3 class="card-title">Promise vs Reality</h3>
+                    <p class="card-text">Autonomy promised, micromanagement delivered. August: 24% margin catastrophe.</p>
                 </div>
+
                 <div class="glass-card">
-                    <div class="card-icon">🏢</div>
-                    <h3 class="card-title">For Organizations</h3>
-                    <ul>
-                        <li>Ensure global values alignment</li>
-                        <li>"Local practice" creates liability</li>
-                        <li>Communication gaps are dangerous</li>
-                        <li>Receptive response prevents escalation</li>
-                        <li>Support employee moral courage</li>
-                        <li>Regular ethics audits needed</li>
-                    </ul>
+                    <h3 class="card-title">Structural Impossibility</h3>
+                    <p class="card-text">Cardullo manages $600M division + MLI. Absent but interfering.</p>
+                </div>
+
+                <div class="glass-card">
+                    <h3 class="card-title">Turner's Pattern</h3>
+                    <p class="card-text">3 companies, 3 conflicts. Common: weak political skills.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Final Insight -->
-        <section class="fade-in" style="min-height: 80vh;">
-            <div class="glass-card" style="padding: 60px; text-align: center;">
-                <div class="card-icon">🎯</div>
-                <h2 class="section-header" style="margin-bottom: 30px;">Final Takeaway</h2>
-                <div class="quote-block" style="border-left: none; text-align: center; font-size: 1.4em; padding: 40px;">
-                    Ethical stands don't have to be career-ending. With preparation, clear communication, professional courage, and organizational openness, it's possible to maintain integrity while delivering exceptional value.
+        <!-- SLIDE 8: Relationship Map -->
+        <section class="fade-in">
+            <div class="content-wrapper">
+                <div class="emoji-3d" style="text-align: center;">🤝️</div>
+                <h2 class="section-header">Relationship Map</h2>
+
+                <div class="grid-3">
+                    <div class="glass-card">
+                        <h3 class="card-title" style="color: #f44336;">⚔️ Against</h3>
+                        <ul>
+                            <li>Pat Cardullo</li>
+                            <li>Julie Chin</li>
+                            <li>Richard Garcia</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3 class="card-title" style="color: #4caf50;">🤝 Support</h3>
+                        <ul>
+                            <li>Bill Cook</li>
+                            <li>Juanita Swenson</li>
+                            <li>Tim Kelly</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3 class="card-title" style="color: #fff;">🔄 Neutral</h3>
+                        <ul>
+                            <li>Ernie Dennis</li>
+                            <li>Arthur Lipsky</li>
+                            <li>Alan Oliver</li>
+                        </ul>
+                    </div>
                 </div>
-                <p class="card-text" style="font-size: 1.2em; margin-top: 40px;">
-                    <strong>Yang's experience proves:</strong> Doing the right thing and doing excellent work are not mutually exclusive-they're mutually reinforcing.
-                </p>
+            </div>
+        </section>
+
+        <!-- SLIDE 9: Internal Coalition -->
+        <section class="fade-in">
+            <div class="content-wrapper">
+                <div class="emoji-3d" style="text-align: center;">🎯</div>
+                <h2 class="section-header">Internal Coalition</h2>
+
+                <div class="glass-card">
+                    <h3 class="card-title">Julie Chin's Role</h3>
+                    <p class="card-text">Reports Turner's decisions to Cardullo before discussion</p>
+                </div>
+
+                <div class="key-insight">
+                    <p class="key-insight-text">
+                        <strong>Example:</strong> Halogen pricing. Chin tells Cardullo first → angry outburst
+                    </p>
+                </div>
+
+                <div class="grid-2">
+                    <div class="mini-card">
+                        <h4 style="color: var(--primary);">Origin</h4>
+                        <p class="card-text">Chin & Garcia from Triple S</p>
+                    </div>
+                    <div class="mini-card">
+                        <h4 style="color: var(--danger);">Result</h4>
+                        <p class="card-text">Turner isolated</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 10: Discussion Questions -->
+        <section class="fade-in">
+            <div class="content-wrapper">
+                <div class="emoji-3d" style="text-align: center;">💬</div>
+                <h2 class="section-header">Discussion Questions</h2>
+
+                <div class="compact-content">
+                    <div class="question-card">
+                        <div class="question-title">Cardullo's Behavior</div>
+
+                            Is such leadership acceptable?
+                        
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">Relationship Dynamics</div>
+                        
+                            Can Turner join inner circle?
+                    
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">Turner's Actions</div>
+                        What is Turner doing wrong?
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 11: Systemic Questions -->
+        <section class="fade-in">
+            <div class="content-wrapper">
+                <div class="emoji-3d" style="text-align: center;">🌐</div>
+                <h2 class="section-header">Systemic Questions</h2>
+
+                <div class="glass-card">
+                    🔍 How to verify promises during interview stage?
+                </div>
+
+                <div class="glass-card">
+                    🤝 How to build alliances in a new organization?
+
+                </div>
+
+                <div class="glass-card">
+                    ⚠️ When does organizational culture become toxic?
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 12: Four Options -->
+        <section class="fade-in">
+            <div class="content-wrapper">
+                <div class="emoji-3d" style="text-align: center;">🛣️</div>
+                <h2 class="section-header">Four Options</h2>
+
+                <div class>
+                    <div class="option-card">
+                        <span class="option-number">1</span>
+                        <div class="option-content">
+                            <h3 class="option-title">Stay and Fight</h3>
+                            <p class="option-desc"><strong style="color: #4caf50;">✓</strong> Chance of success <strong style="color: #f44336;">✗</strong> Toxic environment</p>
+                        </div>
+                    </div>
+
+                    <div class="option-card">
+                        <span class="option-number">2</span>
+                        <div class="option-content">
+                            <h3 class="option-title">Stay and Wait</h3>
+                            <p class="option-desc"><strong style="color: #4caf50;">✓</strong> Time after Oliver <strong style="color: #f44336;">✗</strong> Passive, burnout</p>
+                        </div>
+                    </div>
+
+                    <div class="option-card">
+                        <span class="option-number">3</span>
+                        <div class="option-content">
+                            <h3 class="option-title">Planned Exit (3-6mo)</h3>
+                            <p class="option-desc"><strong style="color: #4caf50;">✓</strong> Controlled exit <strong style="color: #f44336;">✗</strong> 3rd job change</p>
+                        </div>
+                    </div>
+
+                    <div class="option-card">
+                        <span class="option-number">4</span>
+                        <div class="option-content">
+                            <h3 class="option-title">Immediate Exit</h3>
+                            <p class="option-desc"><strong style="color: #4caf50;">✓</strong> End toxicity <strong style="color: #f44336;">✗</strong> Resume damage</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 13: Recommended Actions -->
+        <section class="fade-in">
+            <div class="content-wrapper">
+                <div class="emoji-3d" style="text-align: center;">✅</div>
+                <h2 class="section-header">Recommended Actions</h2>
+
+                <div class>
+                    <div class="glass-card">
+                        <h3 class="card-title">Talk with Cardullo</h3>
+                            Define clear expectations +
+                            Request weekly calls +
+                            Set authority boundaries
+                    </div>
+
+                    <div class="glass-card">
+                        <h3 class="card-title">Oliver's Visit Prep</h3>
+                        <div class="grid-2">
+                            <div class="mini-card">
+                                <h4 style="color: #4caf50;">✓ Wins</h4>
+                                <p class="card-text">KC closure, hires</p>
+                            </div>
+                            <div class="mini-card">
+                                <h4 style="color: #f44336;">✗ Issues</h4>
+                                <p class="card-text">Pricing failed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3 class="card-title">Build Relationships</h3>
+                        <p class="card-text">Fresh start with Chin, support team</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 14: Stay Questions -->
+        <section class="fade-in">
+            <div class="content-wrapper">
+                <div class="emoji-3d" style="text-align: center;">🤝</div>
+                <h2 class="section-header">Questions: Stay Scenario</h2>
+
+                <div>
+                    <div class="question-card">
+                        <div class="question-title">Cardullo Conversation</div>
+                        <ul>
+                            <li>What to discuss specifically?</li>
+                            <li>Focus on one or all problems?</li>
+                        </ul>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">Authority Boundaries</div>
+                        <ul>
+                            <li>What to demand?</li>
+                            <li>How to document agreements?</li>
+                        </ul>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">Oliver's Visit</div>
+                        <ul>
+                            <li>What to tell CEO?</li>
+                            <li>How explain structural issues?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 15: Leave Questions -->
+        <section class="fade-in">
+            <div class="content-wrapper">
+                <div class="emoji-3d" style="text-align: center;">🚪</div>
+                <h2 class="section-header">Questions: Leave Scenario</h2>
+
+                <div >
+                    <div class="question-card">
+                        <div class="question-title">Stay or Leave</div>
+                        <ul>
+                            <li>Impact of 3rd job change?</li>
+                        </ul>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">Financial</div>
+                        <ul>
+                            <li>Can afford to leave now?</li>
+                        </ul>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-title">Job Market</div>
+                        <ul>
+                            <li>Explain job changes to employers?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 16: Final Question -->
+        <section class="fade-in">
+            <div class="content-wrapper">
+                <div class="emoji-3d" style="text-align: center;">🎯</div>
+                <h2 class="section-header">Final Question</h2>
+
+                <div class="glass-card" style="padding: 50px; text-align: center;">
+                    <h3 class="card-title" style="font-size: 1.8em; margin-bottom: 40px;">What should Turner do right now?</h3>
+
+                    <div style="margin-top: 50px;">
+                        <h4 style="color: var(--primary); margin-bottom: 25px; font-size: 1.2em;">Key Takeaways</h4>
+                                      <div class="team-members">
+                    <div class="member-tag">Technical skills need political skills</div>
+                    <div class="member-tag">Being right ≠ good relationships</div>
+                    <div class="member-tag">Structure can prevent success</div>
+                    <div class="member-tag">Verify promises early</div>
+                    <div class="member-tag">Build coalitions from day one</div>
+                </div>
+      
+                    </div>
+                </div>
             </div>
         </section>
     </div>
 
     <!-- THREE.JS LIBRARIES -->
+     <!-- THREE.JS LIBRARIES -->
     <script type="importmap">
         {
             "imports": {
-                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+                "three": "https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/"
             }
         }
     </script>
@@ -1154,25 +1290,28 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.2;
+        renderer.toneMappingExposure = 0;
         container.appendChild(renderer.domElement);
 
-        const lightLeft = new THREE.PointLight(0x6366FF, 40);
+        // Освещение
+        const lightLeft = new THREE.PointLight(0x6366FF, 100);
         lightLeft.position.set(-12, 8, 8);
         scene.add(lightLeft);
 
-        const lightRight = new THREE.PointLight(0xFF0080, 35);
+        const lightRight = new THREE.PointLight(0xFF0080, 205);
         lightRight.position.set(12, -8, 8);
         scene.add(lightRight);
 
-        const topLight = new THREE.DirectionalLight(0xffffff, 2);
+        const topLight = new THREE.DirectionalLight(0xffffff, 1);
         topLight.position.set(0, 8, 12);
         scene.add(topLight);
 
-        const createAestheticMaterial = (color) => new THREE.MeshPhysicalMaterial({
-            color: color,
+        // ОДНА ФИГУРА - ТОРУС
+        const geometry = new THREE.TorusGeometry(2, 0.8, 100, 100);
+        const material = new THREE.MeshPhysicalMaterial({
+            color: 0x667eea,
             roughness: 0.25,
-            metalness: 0.15,
+            metalness: 0.5,
             sheen: 1.0,
             sheenColor: 0xffffff,
             clearcoat: 0.5,
@@ -1182,31 +1321,13 @@
             opacity: 1.0,
             transparent: false
         });
+        
+        const torus = new THREE.Mesh(geometry, material);
+        scene.add(torus);
 
-        const shapes = [];
-        const config = [
-            { geo: new THREE.SphereGeometry(0.8, 64, 64), color: 0xFF1744, pos: [-10, 6, 0], scale: 0.8 },
-            { geo: new THREE.TorusGeometry(1.2, 0.5, 32, 100), color: 0x00E5FF, pos: [5.5, 5.5, 0], scale: 1.2 },
-            { geo: new THREE.BoxGeometry(1.6, 1.6, 1.6), color: 0xD500F9, pos: [6, -5.5, 0], scale: 1 }
-        ];
+        camera.position.z = 5;
 
-        config.forEach((data, i) => {
-            const mesh = new THREE.Mesh(data.geo, createAestheticMaterial(data.color));
-            mesh.position.set(data.pos[0], data.pos[1], data.pos[2]);
-            mesh.scale.set(data.scale, data.scale, data.scale);
-            
-            mesh.userData = {
-                rotSpeed: 0.005 + (i * 0.001),
-                floatOffset: i * Math.PI * 0.6,
-                originalPos: { x: data.pos[0], y: data.pos[1], z: data.pos[2] }
-            };
-
-            scene.add(mesh);
-            shapes.push(mesh);
-        });
-
-        camera.position.z = 15;
-
+        // Пост-обработка
         const composer = new EffectComposer(renderer);
         composer.addPass(new RenderPass(scene, camera));
         
@@ -1223,17 +1344,16 @@
             requestAnimationFrame(animate);
             const time = performance.now() * 0.001;
 
-            shapes.forEach((mesh, i) => {
-                mesh.rotation.x += mesh.userData.rotSpeed;
-                mesh.rotation.y += mesh.userData.rotSpeed * 0.9;
-                mesh.rotation.z += mesh.userData.rotSpeed * 0.5;
+            // Анимация одной фигуры
+            torus.rotation.x += 0.005;
+            torus.rotation.y += 0.005;
+            torus.rotation.z += 0.002;
 
-                mesh.position.y = mesh.userData.originalPos.y + Math.sin(time + mesh.userData.floatOffset) * 0.5;
-                
-                mesh.position.x += (mesh.userData.originalPos.x + mouseX * 1.2 - mesh.position.x) * 0.03;
-                mesh.position.y += (mesh.userData.originalPos.y + Math.sin(time + mesh.userData.floatOffset) * 0.5 - mesh.position.y) * 0.03;
-            });
+            // Плавное перемещение с помощью мыши
+            torus.position.x += (mouseX * 3 - torus.position.x) * 0.03;
+            torus.position.y += (-mouseY * 3 - torus.position.y) * 0.03;
 
+            // Плавное движение камеры
             camera.position.x += (mouseX * 2 - camera.position.x) * 0.02;
             camera.position.y += (-mouseY * 2 - camera.position.y) * 0.02;
             camera.lookAt(0, 0, 0);
